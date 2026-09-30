@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CircuitDivider from '../components/CircuitDivider.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const blocks = [
+  { title: t(lang, 'about.whoTitle'), paragraphs: t<string[]>(lang, 'about.whoText') },
+  { title: t(lang, 'about.baseTitle'), paragraphs: t<string[]>(lang, 'about.baseText') },
+  { title: t(lang, 'about.modelTitle'), paragraphs: [t(lang, 'about.modelText')] },
+];
+---
+
+<BaseLayout lang={lang} page="about" title={t(lang, 'about.title')} description={t(lang, 'about.metaDescription')}>
+  <PageHeader eyebrow={t(lang, 'about.eyebrow')} title={t(lang, 'about.heading')} intro={t(lang, 'about.intro')} />
+
+  <section class="py-16 sm:py-20">
+    <div class="container-page grid gap-12 lg:grid-cols-3">
+      {
+        blocks.map((b) => (
+          <div class="prose-page">
+            <h2 class="mb-4 text-xl font-semibold">{b.title}</h2>
+            {b.paragraphs.map((p) => <p>{p}</p>)}
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="bg-offwhite py-16 sm:py-20">
+    <div class="container-page mx-auto max-w-3xl text-center">
+      <p class="eyebrow">{t(lang, 'about.visionTitle')}</p>
+      <p class="mt-4 font-heading text-2xl font-semibold leading-snug text-navy sm:text-3xl">{t(lang, 'about.visionText')}</p>
+      <CircuitDivider class="my-10" />
+      <p class="text-lg leading-relaxed text-muted">{t(lang, 'about.closing')}</p>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

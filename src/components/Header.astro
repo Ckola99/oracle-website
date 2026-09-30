@@ -1,0 +1,99 @@
+---
+import Logo from './Logo.astro';
+import { navItems } from '../lib/nav';
+import { t, path, otherLang, type Lang, type RouteKey } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  page?: RouteKey;
+}
+const { lang, page } = Astro.props;
+const alt = otherLang(lang);
+const switchHref = path(alt, page ?? 'home');
+---
+
+<header class="sticky top-0 z-40 border-b border-navy/10 bg-white/95 backdrop-blur">
+  <div class="container-page flex h-16 items-center justify-between gap-4 sm:h-20">
+    <Logo lang={lang} />
+
+    <nav aria-label={t(lang, 'nav.mainLabel')} class="hidden lg:block">
+      <ul class="flex items-center gap-6">
+        {
+          navItems.map((key) => (
+            <li>
+              <a
+                href={path(lang, key)}
+                aria-current={page === key ? 'page' : undefined}
+                class="font-heading text-sm font-medium text-navy no-underline hover:text-royal aria-[current=page]:text-royal aria-[current=page]:underline aria-[current=page]:decoration-gold-light aria-[current=page]:decoration-2"
+              >
+                {t(lang, `nav.${key}`)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a
+        href={switchHref}
+        hreflang={alt}
+        lang={alt}
+        aria-label={t(lang, 'nav.switchTo')}
+        class="rounded-md border border-navy/15 px-2.5 py-1.5 font-heading text-xs font-semibold tracking-wider text-navy no-underline hover:border-navy"
+      >
+        <span aria-hidden="true">{t(lang, 'nav.switchToShort')}</span>
+      </a>
+      <a href={path(lang, 'contact')} class="btn btn-primary hidden !py-2.5 sm:inline-flex" aria-current={page === 'contact' ? 'page' : undefined}>
+        {t(lang, 'nav.contact')}
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex size-10 items-center justify-center rounded-md text-navy hover:bg-offwhite lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-label-open={t(lang, 'nav.menu')}
+        data-label-close={t(lang, 'nav.close')}
+      >
+        <span class="sr-only">{t(lang, 'nav.menu')}</span>
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path class="menu-open" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          <path class="menu-close hidden" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" aria-label={t(lang, 'nav.mainLabel')} class="hidden border-t border-navy/10 bg-white lg:hidden">
+    <ul class="container-page flex flex-col py-2">
+      {
+        [...navItems, 'contact' as const].map((key) => (
+          <li>
+            <a
+              href={path(lang, key)}
+              aria-current={page === key ? 'page' : undefined}
+              class="block border-b border-navy/5 py-3.5 font-heading font-medium text-navy no-underline aria-[current=page]:text-royal"
+            >
+              {t(lang, `nav.${key}`)}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    menu?.classList.toggle('hidden', !open);
+    toggle.querySelector('.menu-open')?.classList.toggle('hidden', open);
+    toggle.querySelector('.menu-close')?.classList.toggle('hidden', !open);
+    const label = toggle.querySelector('.sr-only');
+    if (label) label.textContent = (open ? toggle.dataset.labelClose : toggle.dataset.labelOpen) ?? '';
+  });
+</script>

@@ -1,0 +1,20 @@
+---
+// Gold circuit-line motif from the logo, used as a subtle section divider.
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['flex items-center justify-center gap-3 text-gold-light', className]} aria-hidden="true">
+  <svg width="120" height="24" viewBox="0 0 120 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M0 12h70l8-8h20" /><circle cx="101" cy="4" r="3" />
+    <path d="M40 12l6 6h30" /><circle cx="79" cy="18" r="3" />
+    <circle cx="116" cy="12" r="3" /><path d="M86 12h27" />
+  </svg>
+  <svg width="120" height="24" viewBox="0 0 120 24" fill="none" stroke="currentColor" stroke-width="1.5" class="-scale-x-100">
+    <path d="M0 12h70l8-8h20" /><circle cx="101" cy="4" r="3" />
+    <path d="M40 12l6 6h30" /><circle cx="79" cy="18" r="3" />
+    <circle cx="116" cy="12" r="3" /><path d="M86 12h27" />
+  </svg>
+</div>

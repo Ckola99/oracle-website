@@ -1,0 +1,21 @@
+{
+  "_comment": "Company details. Leave a value empty (\"\") to hide it on the site.",
+  "companyName": "Oracle Services Sarl",
+  "url": "https://oraclesces.com",
+  "emails": {
+    "general": "info@oraclesces.com",
+    "sales": "sales@oraclesces.com"
+  },
+  "phone": "",
+  "whatsapp": "",
+  "address": "",
+  "city": "Kolwezi",
+  "region": "Lualaba",
+  "countryCode": "CD",
+  "rccm": "",
+  "idNat": "",
+  "social": {
+    "linkedin": "",
+    "facebook": ""
+  }
+}

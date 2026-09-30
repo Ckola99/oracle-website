@@ -1,0 +1,68 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/montserrat';
+@import '@fontsource-variable/inter';
+
+/* Brand tokens — sampled from public/images/logo.jpeg (npm run brand) */
+@theme {
+  --color-navy: #0a1e4c;
+  --color-navy-deep: #06132f;
+  --color-royal: #135b9a;
+  --color-royal-light: #d6e4f2;
+  --color-gold: #9f7a3e;        /* "SERVICES" — large text / decoration only (3.9:1 on white) */
+  --color-gold-dark: #7d5d26;   /* gold for body-size text on white (≥5.5:1) */
+  --color-gold-light: #cbaa60;  /* Africa / circuit lines — on navy, and for fills */
+  --color-offwhite: #f7f6f2;
+  --color-ink: #1c2433;
+  --color-muted: #4f5a6b;
+
+  --font-heading: 'Montserrat Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading text-navy;
+    text-wrap: balance;
+  }
+  a {
+    @apply text-royal underline-offset-4;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-royal;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+  /* Small wide-tracked labels, echoing "SERVICES" in the logo */
+  .eyebrow {
+    @apply font-heading text-xs font-semibold uppercase tracking-[0.25em] text-gold-dark;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-heading text-sm font-semibold no-underline transition-colors;
+  }
+  /* Use together with .btn, e.g. class="btn btn-primary" */
+  .btn-primary {
+    @apply bg-navy text-white hover:bg-royal;
+  }
+  .btn-gold {
+    @apply bg-gold-light text-navy hover:bg-white;
+  }
+  .btn-outline {
+    @apply border border-navy/20 text-navy hover:border-navy hover:bg-navy hover:text-white;
+  }
+  .prose-page p {
+    @apply mb-4 leading-relaxed text-muted;
+  }
+  .field {
+    @apply block w-full rounded-md border border-navy/20 bg-white px-3 py-2.5 text-ink placeholder:text-muted/60 focus:border-royal focus:outline-none focus:ring-2 focus:ring-royal/30;
+  }
+}

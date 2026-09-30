@@ -1,0 +1,11 @@
+---
+// Data-driven pages (gallery, testimonials) are only built once they have content.
+import Gallery from '../views/Gallery.astro';
+import Testimonials from '../views/Testimonials.astro';
+import { conditionalPages } from '../lib/conditional-pages';
+
+export const getStaticPaths = () => conditionalPages('fr');
+const { view } = Astro.props;
+---
+
+{view === 'gallery' ? <Gallery lang="fr" /> : <Testimonials lang="fr" />}

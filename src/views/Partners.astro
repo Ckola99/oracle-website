@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import PartnerGrid from '../components/PartnerGrid.astro';
+import { suppliers, customers, has } from '../lib/content';
+import { t, path, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const groups = [
+  { title: t(lang, 'partners.suppliersTitle'), items: suppliers },
+  { title: t(lang, 'partners.customersTitle'), items: customers },
+].filter((g) => g.items.length > 0);
+---
+
+<BaseLayout lang={lang} page="partners" title={t(lang, 'partners.title')} description={t(lang, 'partners.metaDescription')}>
+  <PageHeader eyebrow={t(lang, 'partners.eyebrow')} title={t(lang, 'partners.heading')} intro={t(lang, 'partners.intro')} />
+
+  {
+    groups.map((g) => (
+      <section class="py-14 sm:py-16">
+        <div class="container-page">
+          <SectionTitle title={g.title} />
+          <div class="mt-8"><PartnerGrid lang={lang} partners={g.items} showSince /></div>
+        </div>
+      </section>
+    ))
+  }
+  {
+    !has.partners && (
+      <section class="py-14">
+        <p class="container-page text-muted">{t(lang, 'partners.emptyText')}</p>
+      </section>
+    )
+  }
+
+  <section class="pb-16 sm:pb-20">
+    <div class="container-page">
+      <div class="rounded-xl bg-navy p-8 text-white sm:p-12 md:flex md:items-center md:justify-between md:gap-10">
+        <div class="max-w-2xl">
+          <h2 class="text-2xl font-bold text-white">{t(lang, 'partners.becomeTitle')}</h2>
+          <p class="mt-3 text-white/80">{t(lang, 'partners.becomeText')}</p>
+        </div>
+        <a href={`${path(lang, 'contact')}?type=partner`} class="btn btn-gold mt-6 shrink-0 md:mt-0">{t(lang, 'partners.becomeButton')}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

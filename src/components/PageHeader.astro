@@ -1,0 +1,16 @@
+---
+import SectionTitle from './SectionTitle.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+}
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-navy/10 bg-offwhite">
+  <div class="container-page py-14 sm:py-20">
+    <SectionTitle level={1} eyebrow={eyebrow} title={title} intro={intro} />
+  </div>
+</section>

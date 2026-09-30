@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "siteName": "Oracle Services Sarl",
+    "defaultDescription": "Oracle Services Sarl, basée à Kolwezi (RDC), met en relation les organisations avec des partenaires de confiance pour leur fournir les services et solutions dont elles ont besoin, en Afrique et au-delà.",
+    "logoAlt": "Logo Oracle Services — globe avec l'Afrique en or",
+    "skipToContent": "Aller au contenu"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "partners": "Partenaires",
+    "where": "Où nous opérons",
+    "gallery": "Galerie",
+    "testimonials": "Témoignages",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer",
+    "mainLabel": "Navigation principale",
+    "languageLabel": "Langue",
+    "switchTo": "English",
+    "switchToShort": "EN"
+  },
+  "common": {
+    "tagline": "Relier l'expertise. Livrer des solutions.",
+    "contactUs": "Contactez-nous",
+    "learnMore": "En savoir plus",
+    "location": "Kolwezi, République Démocratique du Congo",
+    "locationShort": "Kolwezi, RDC"
+  },
+  "home": {
+    "title": "Oracle Services Sarl — Relier l'expertise. Livrer des solutions.",
+    "heroEyebrow": "Kolwezi · RDC · Afrique",
+    "heroTitle": "Relier l'expertise. Livrer des solutions.",
+    "heroText": "Basés à Kolwezi, en RDC, nous mettons en relation les organisations avec des partenaires de confiance pour leur fournir les services et solutions dont elles ont besoin, en Afrique et au-delà.",
+    "heroSecondary": "Nos services",
+    "whatEyebrow": "Ce que nous faisons",
+    "whatTitle": "Un seul interlocuteur, les bons partenaires",
+    "whatIntro": "Nous ne sommes pas limités à un secteur. Nous travaillons avec des partenaires fiables et professionnels pour répondre aux besoins du marché.",
+    "cards": [
+      { "title": "Conseil", "text": "Nous vous aidons à définir clairement votre besoin et la meilleure façon d'y répondre." },
+      { "title": "Mise en relation", "text": "Nous identifions le partenaire adapté — fournisseur, intégrateur ou institution — et faisons le lien." },
+      { "title": "Livraison", "text": "Nous suivons le projet avec vous et nos partenaires jusqu'à la livraison." }
+    ],
+    "partnersEyebrow": "Ils travaillent avec nous",
+    "partnersTitle": "Partenaires et clients",
+    "partnersLink": "Voir tous les partenaires",
+    "mapEyebrow": "Où nous opérons",
+    "mapTitle": "Basés en RDC, tournés vers l'Afrique",
+    "mapText": "Enregistrés à Kolwezi, la capitale mondiale du cuivre, nous opérons dans toute la RDC. Notre ambition est panafricaine, avec une vision mondiale.",
+    "mapLink": "Voir la carte",
+    "testimonialsEyebrow": "Témoignages",
+    "testimonialsTitle": "Ce que disent nos clients"
+  },
+  "cta": {
+    "title": "Vous avez un besoin ? Parlons-en.",
+    "text": "Dites-nous ce que vous recherchez. Nous vous répondrons rapidement.",
+    "button": "Contactez-nous"
+  },
+  "about": {
+    "title": "À propos",
+    "metaDescription": "Oracle Services Sarl est une société de conseil et de mise en relation enregistrée à Kolwezi, en RDC, qui opère dans tout le pays avec une vision panafricaine.",
+    "eyebrow": "Qui nous sommes",
+    "heading": "Un connecteur entre les besoins et les solutions",
+    "intro": "Oracle Services Sarl est une société de conseil et de fourniture de services, enregistrée à Kolwezi, en République Démocratique du Congo.",
+    "whoTitle": "Qui nous sommes",
+    "whoText": [
+      "Nous travaillons en partenariat avec des fournisseurs de produits et de services dans différents secteurs : fintech, institutions financières, intégrateurs de solutions, mines et industrie, et d'autres.",
+      "Notre rôle est simple : comprendre le besoin de nos clients et les mettre en relation avec le partenaire qui peut y répondre."
+    ],
+    "baseTitle": "Kolwezi, notre base",
+    "baseText": [
+      "Kolwezi, dans la province du Lualaba, est connue comme la capitale mondiale du cuivre. C'est là que nous sommes enregistrés.",
+      "Nous opérons dans toute la RDC. Notre ambition est panafricaine, avec une vision mondiale — sans frontières."
+    ],
+    "visionTitle": "Notre vision",
+    "visionText": "Travailler avec nos partenaires pour dépasser les attentes de nos clients.",
+    "modelTitle": "Comment nous travaillons",
+    "modelText": "Le client nous confie son besoin. Nous sélectionnons le bon partenaire. Nous livrons ensemble, avec un seul point de contact pour le client.",
+    "closing": "Rejoignez-nous dans ce parcours de réussite sur notre cher continent, l'Afrique. Notre continent mérite des services et une exécution de projets de classe mondiale."
+  },
+  "services": {
+    "title": "Services",
+    "metaDescription": "Conseil et fourniture de services et de solutions en RDC et en Afrique : fintech, institutions financières, intégrateurs de solutions, mines et industrie.",
+    "eyebrow": "Services",
+    "heading": "Conseil et fourniture de solutions",
+    "intro": "Nous accompagnons les organisations de la définition du besoin jusqu'à la livraison, en nous appuyant sur un réseau de partenaires fiables.",
+    "offerTitle": "Ce que nous proposons",
+    "offers": [
+      { "title": "Conseil", "text": "Analyse du besoin, recherche de solutions, accompagnement dans le choix et la mise en œuvre." },
+      { "title": "Fourniture de services et de solutions", "text": "Accès, via nos partenaires, aux produits, services et solutions adaptés à votre projet." },
+      { "title": "Coordination de projet", "text": "Un point de contact unique entre vous et nos partenaires, du lancement à la livraison." }
+    ],
+    "industriesTitle": "Secteurs",
+    "industriesIntro": "Nous ne sommes pas limités à un secteur. Voici quelques domaines où nous intervenons :",
+    "industries": [
+      "Fintech",
+      "Institutions financières",
+      "Intégrateurs de solutions",
+      "Mines et industrie",
+      "Et d'autres secteurs, selon les besoins du marché"
+    ],
+    "processTitle": "Comment ça marche",
+    "steps": [
+      { "title": "Vous nous exposez votre besoin", "text": "Expliquez-nous ce que vous recherchez et vos contraintes." },
+      { "title": "Nous trouvons le bon partenaire", "text": "Nous sélectionnons le partenaire le plus adapté dans notre réseau." },
+      { "title": "Nous livrons ensemble", "text": "Nous coordonnons le projet jusqu'à la livraison." }
+    ]
+  },
+  "partners": {
+    "title": "Partenaires",
+    "metaDescription": "Les partenaires fournisseurs et les clients d'Oracle Services Sarl.",
+    "eyebrow": "Partenaires",
+    "heading": "Nos partenaires et clients",
+    "intro": "Nous travaillons avec des partenaires fiables et professionnels. Les logos sont affichés avec l'accord écrit de chaque organisation.",
+    "suppliersTitle": "Fournisseurs et partenaires",
+    "customersTitle": "Clients",
+    "emptyText": "Notre liste de partenaires sera publiée ici au fur et à mesure des autorisations.",
+    "becomeTitle": "Devenir partenaire",
+    "becomeText": "Vous fournissez des produits, des services ou des solutions et souhaitez vous développer en RDC et en Afrique ? Parlons-en.",
+    "becomeButton": "Devenir partenaire",
+    "visit": "Visiter le site de {name}",
+    "since": "Depuis {year}"
+  },
+  "where": {
+    "title": "Où nous opérons",
+    "metaDescription": "Oracle Services Sarl est basée à Kolwezi et opère dans toute la RDC, avec une vision panafricaine.",
+    "eyebrow": "Où nous opérons",
+    "heading": "La RDC comme base, l'Afrique comme horizon",
+    "intro": "Nous sommes enregistrés à Kolwezi et opérons dans toute la RDC. D'autres pays seront ajoutés au fur et à mesure de nos activités.",
+    "mapLabel": "Carte de l'Afrique indiquant les pays où Oracle Services opère",
+    "legendTitle": "Légende",
+    "status": {
+      "base": "Notre base",
+      "active": "Activité en cours",
+      "potential": "Potentiel identifié"
+    },
+    "listTitle": "Pays",
+    "potentialLabel": "Potentiel"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "metaDescription": "Photos de rencontres avec nos partenaires, de salons et d'événements.",
+    "eyebrow": "Galerie",
+    "heading": "Rencontres et événements",
+    "intro": "Rencontres avec nos partenaires, salons et événements."
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "metaDescription": "Ce que disent les clients d'Oracle Services Sarl.",
+    "eyebrow": "Témoignages",
+    "heading": "Ce que disent nos clients"
+  },
+  "contact": {
+    "title": "Contact",
+    "metaDescription": "Contactez Oracle Services Sarl à Kolwezi, RDC : info@oraclesces.com, sales@oraclesces.com.",
+    "eyebrow": "Contact",
+    "heading": "Parlons de votre besoin",
+    "intro": "Remplissez le formulaire ou écrivez-nous directement. Nous vous répondrons dans les meilleurs délais.",
+    "emailGeneral": "Informations générales",
+    "emailSales": "Commercial",
+    "phone": "Téléphone",
+    "whatsapp": "WhatsApp",
+    "locationTitle": "Localisation",
+    "form": {
+      "name": "Nom complet",
+      "company": "Société / organisation",
+      "email": "E-mail",
+      "phone": "Téléphone / WhatsApp",
+      "country": "Pays",
+      "type": "Je suis…",
+      "typeCustomer": "Un client à la recherche d'une solution",
+      "typePartner": "Un fournisseur ou partenaire",
+      "typeOther": "Autre",
+      "message": "Que recherchez-vous ?",
+      "messageHint": "Décrivez brièvement votre besoin ou votre offre.",
+      "required": "obligatoire",
+      "submit": "Envoyer le message",
+      "honeypot": "Ne remplissez pas ce champ si vous êtes humain :",
+      "privacy": "Vos informations sont utilisées uniquement pour répondre à votre demande."
+    }
+  },
+  "thanks": {
+    "title": "Merci",
+    "heading": "Merci, votre message a bien été envoyé.",
+    "text": "Nous avons bien reçu votre demande et vous répondrons dans les meilleurs délais.",
+    "back": "Retour à l'accueil"
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "heading": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
+  },
+  "footer": {
+    "about": "Société de conseil et de mise en relation, enregistrée à Kolwezi, RDC.",
+    "contactTitle": "Contact",
+    "linksTitle": "Pages",
+    "registration": "RCCM",
+    "idNat": "Id. Nat.",
+    "rights": "Tous droits réservés."
+  }
+}

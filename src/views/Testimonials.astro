@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import TestimonialList from '../components/TestimonialList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { testimonials } from '../lib/content';
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<BaseLayout lang={lang} page="testimonials" title={t(lang, 'testimonials.title')} description={t(lang, 'testimonials.metaDescription')}>
+  <PageHeader eyebrow={t(lang, 'testimonials.eyebrow')} title={t(lang, 'testimonials.heading')} />
+  <section class="py-14 sm:py-16">
+    <div class="container-page"><TestimonialList lang={lang} items={testimonials} /></div>
+  </section>
+  <CtaBand lang={lang} />
+</BaseLayout>

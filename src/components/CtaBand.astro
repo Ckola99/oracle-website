@@ -1,0 +1,18 @@
+---
+import CircuitDivider from './CircuitDivider.astro';
+import { t, path, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<section class="bg-navy">
+  <div class="container-page py-14 text-center sm:py-16">
+    <CircuitDivider class="mb-6" />
+    <h2 class="text-2xl font-bold text-white sm:text-3xl">{t(lang, 'cta.title')}</h2>
+    <p class="mx-auto mt-3 max-w-xl text-white/80">{t(lang, 'cta.text')}</p>
+    <a href={path(lang, 'contact')} class="btn btn-gold mt-8">{t(lang, 'cta.button')}</a>
+  </div>
+</section>

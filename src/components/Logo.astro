@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../assets/brand/logo-mark.png';
+import wordmark from '../assets/brand/logo-wordmark.png';
+import { t, path, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  class?: string;
+}
+const { lang, class: className = '' } = Astro.props;
+---
+
+<a href={path(lang, 'home')} class:list={['flex items-center gap-2.5 no-underline', className]}>
+  <Image src={mark} alt="" width={44} height={44} densities={[1, 2]} loading="eager" class="size-10 sm:size-11" />
+  <Image src={wordmark} alt={t(lang, 'meta.siteName')} width={150} densities={[1, 2]} loading="eager" class="h-auto w-[120px] sm:w-[150px]" />
+</a>

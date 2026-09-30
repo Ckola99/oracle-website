@@ -1,0 +1,25 @@
+---
+// Simple centred message page: thank-you page and 404.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CircuitDivider from '../components/CircuitDivider.astro';
+import { t, path, type Lang, type RouteKey } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  /** i18n section: 'thanks' or 'notFound' */
+  section: 'thanks' | 'notFound';
+  page?: RouteKey;
+}
+const { lang, section, page } = Astro.props;
+---
+
+<BaseLayout lang={lang} page={page} title={t(lang, `${section}.title`)} noindex>
+  <section class="py-24 sm:py-32">
+    <div class="container-page mx-auto max-w-2xl text-center">
+      <CircuitDivider class="mb-8" />
+      <h1 class="text-3xl font-bold sm:text-4xl">{t(lang, `${section}.heading`)}</h1>
+      <p class="mt-4 text-lg text-muted">{t(lang, `${section}.text`)}</p>
+      <a href={path(lang, 'home')} class="btn btn-primary mt-10">{t(lang, `${section}.back`)}</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import mark from '../assets/brand/logo-mark.png';
+import site from '../data/site.json';
+import { navItems } from '../lib/nav';
+import { t, path, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+const socials = Object.entries(site.social).filter(([, url]) => url);
+const linkClass = 'text-white/80 no-underline hover:text-gold-light';
+---
+
+<footer class="bg-navy text-white/80">
+  <div class="container-page grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="lg:col-span-2">
+      <div class="flex items-center gap-3">
+        <Image src={mark} alt="" width={48} height={48} densities={[1, 2]} class="size-12" />
+        <div>
+          <p class="font-heading text-lg font-bold tracking-wide text-white">{site.companyName}</p>
+          <p class="font-heading text-xs uppercase tracking-[0.2em] text-gold-light">{t(lang, 'common.tagline')}</p>
+        </div>
+      </div>
+      <p class="mt-4 max-w-sm text-sm">{t(lang, 'footer.about')}</p>
+      {
+        (site.rccm || site.idNat) && (
+          <p class="mt-3 text-xs text-white/60">
+            {site.rccm && <span>{t(lang, 'footer.registration')} : {site.rccm}</span>}
+            {site.rccm && site.idNat && <span> · </span>}
+            {site.idNat && <span>{t(lang, 'footer.idNat')} : {site.idNat}</span>}
+          </p>
+        )
+      }
+    </div>
+
+    <div>
+      <h2 class="eyebrow !text-gold-light">{t(lang, 'footer.linksTitle')}</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {navItems.map((key) => <li><a href={path(lang, key)} class={linkClass}>{t(lang, `nav.${key}`)}</a></li>)}
+        <li><a href={path(lang, 'contact')} class={linkClass}>{t(lang, 'nav.contact')}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="eyebrow !text-gold-light">{t(lang, 'footer.contactTitle')}</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href={`mailto:${site.emails.general}`} class={linkClass}>{site.emails.general}</a></li>
+        <li><a href={`mailto:${site.emails.sales}`} class={linkClass}>{site.emails.sales}</a></li>
+        {site.phone && <li><a href={`tel:${site.phone.replace(/\s/g, '')}`} class={linkClass}>{site.phone}</a></li>}
+        <li>{site.address ? `${site.address}, ` : ''}{t(lang, 'common.locationShort')}</li>
+        {socials.map(([name, url]) => <li><a href={url} class={`${linkClass} capitalize`} rel="me noopener">{name}</a></li>)}
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <p class="container-page py-5 text-xs text-white/60">© {year} {site.companyName}. {t(lang, 'footer.rights')}</p>
+  </div>
+</footer>

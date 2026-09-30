@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { getImage, localized, type GalleryItem } from '../lib/content';
+import type { Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  items: GalleryItem[];
+}
+const { lang, items } = Astro.props;
+const formatDate = (iso: string) =>
+  new Intl.DateTimeFormat(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+---
+
+<ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  {
+    items.map((item, i) => {
+      const caption = localized(item, 'caption', lang);
+      return (
+        <li>
+          <figure class="overflow-hidden rounded-lg border border-navy/10 bg-white">
+            <Image
+              src={getImage('gallery', item.image)}
+              alt={caption}
+              widths={[400, 800]}
+              sizes="(min-width: 1024px) 368px, (min-width: 640px) 50vw, 100vw"
+              loading={i < 3 ? 'eager' : 'lazy'}
+              class="aspect-[4/3] w-full object-cover"
+            />
+            <figcaption class="p-4">
+              <p class="text-ink">{caption}</p>
+              <p class="mt-1 text-sm text-muted">
+                <time datetime={item.date}>{formatDate(item.date)}</time>
+                {item.location && <span> · {item.location}</span>}
+              </p>
+            </figcaption>
+          </figure>
+        </li>
+      );
+    })
+  }
+</ul>

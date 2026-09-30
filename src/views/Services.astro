@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import CardGrid from '../components/CardGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { t, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+type Item = { title: string; text: string };
+---
+
+<BaseLayout lang={lang} page="services" title={t(lang, 'services.title')} description={t(lang, 'services.metaDescription')}>
+  <PageHeader eyebrow={t(lang, 'services.eyebrow')} title={t(lang, 'services.heading')} intro={t(lang, 'services.intro')} />
+
+  <section class="py-16 sm:py-20">
+    <div class="container-page">
+      <SectionTitle title={t(lang, 'services.offerTitle')} />
+      <div class="mt-8"><CardGrid items={t<Item[]>(lang, 'services.offers')} /></div>
+    </div>
+  </section>
+
+  <section class="border-y border-navy/10 bg-offwhite py-16 sm:py-20">
+    <div class="container-page">
+      <SectionTitle title={t(lang, 'services.industriesTitle')} intro={t(lang, 'services.industriesIntro')} />
+      <ul class="mt-8 flex flex-wrap gap-3">
+        {
+          t<string[]>(lang, 'services.industries').map((name) => (
+            <li class="rounded-full border border-navy/15 bg-white px-4 py-2 font-heading text-sm font-medium text-navy">{name}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="container-page">
+      <SectionTitle title={t(lang, 'services.processTitle')} />
+      <div class="mt-8"><CardGrid items={t<Item[]>(lang, 'services.steps')} numbered /></div>
+    </div>
+  </section>
+
+  <CtaBand lang={lang} />
+</BaseLayout>

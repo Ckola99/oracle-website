@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import site from '../data/site.json';
+import { t, path, type Lang } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const f = (key: string) => t(lang, `contact.form.${key}`);
+const label = 'mb-1.5 block font-heading text-sm font-medium text-navy';
+const req = `<span class="text-gold-dark" aria-hidden="true">*</span><span class="sr-only"> (${f('required')})</span>`;
+const channels = [
+  { title: t(lang, 'contact.emailGeneral'), value: site.emails.general, href: `mailto:${site.emails.general}` },
+  { title: t(lang, 'contact.emailSales'), value: site.emails.sales, href: `mailto:${site.emails.sales}` },
+  ...(site.phone ? [{ title: t(lang, 'contact.phone'), value: site.phone, href: `tel:${site.phone.replace(/\s/g, '')}` }] : []),
+  ...(site.whatsapp ? [{ title: t(lang, 'contact.whatsapp'), value: site.whatsapp, href: `https://wa.me/${site.whatsapp.replace(/\D/g, '')}` }] : []),
+];
+---
+
+<BaseLayout lang={lang} page="contact" title={t(lang, 'contact.title')} description={t(lang, 'contact.metaDescription')}>
+  <PageHeader eyebrow={t(lang, 'contact.eyebrow')} title={t(lang, 'contact.heading')} intro={t(lang, 'contact.intro')} />
+
+  <section class="py-14 sm:py-16">
+    <div class="container-page grid gap-12 lg:grid-cols-[1fr_1.6fr]">
+      <aside class="space-y-6">
+        {
+          channels.map((c) => (
+            <div>
+              <h2 class="eyebrow">{c.title}</h2>
+              <a href={c.href} class="mt-1 block break-all font-heading text-lg font-semibold text-navy hover:text-royal">{c.value}</a>
+            </div>
+          ))
+        }
+        <div>
+          <h2 class="eyebrow">{t(lang, 'contact.locationTitle')}</h2>
+          <p class="mt-1 text-lg text-navy">
+            {site.address && <>{site.address}<br /></>}
+            {t(lang, 'common.location')}
+          </p>
+        </div>
+      </aside>
+
+      <form
+        name="contact"
+        method="POST"
+        action={path(lang, 'thanks')}
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="grid gap-5 rounded-xl border border-navy/10 bg-offwhite p-6 sm:grid-cols-2 sm:p-8"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="language" value={lang} />
+        <p class="hidden">
+          <label>{f('honeypot')} <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <div>
+          <label for="name" class={label}>{f('name')} <Fragment set:html={req} /></label>
+          <input id="name" name="name" type="text" autocomplete="name" required class="field" />
+        </div>
+        <div>
+          <label for="company" class={label}>{f('company')}</label>
+          <input id="company" name="company" type="text" autocomplete="organization" class="field" />
+        </div>
+        <div>
+          <label for="email" class={label}>{f('email')} <Fragment set:html={req} /></label>
+          <input id="email" name="email" type="email" autocomplete="email" required class="field" />
+        </div>
+        <div>
+          <label for="phone" class={label}>{f('phone')}</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" class="field" />
+        </div>
+        <div>
+          <label for="country" class={label}>{f('country')}</label>
+          <input id="country" name="country" type="text" autocomplete="country-name" class="field" />
+        </div>
+        <div>
+          <label for="type" class={label}>{f('type')}</label>
+          <select id="type" name="type" class="field">
+            <option value="customer">{f('typeCustomer')}</option>
+            <option value="partner">{f('typePartner')}</option>
+            <option value="other">{f('typeOther')}</option>
+          </select>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class={label}>{f('message')} <Fragment set:html={req} /></label>
+          <textarea id="message" name="message" rows="6" required aria-describedby="message-hint" class="field"></textarea>
+          <p id="message-hint" class="mt-1.5 text-sm text-muted">{f('messageHint')}</p>
+        </div>
+        <div class="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-sm text-muted">{f('privacy')}</p>
+          <button type="submit" class="btn btn-primary shrink-0">{f('submit')}</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Pre-select "I am a…" from ?type=partner (used by the "Become a partner" button).
+  const type = new URLSearchParams(location.search).get('type');
+  const select = document.getElementById('type') as HTMLSelectElement | null;
+  if (select && type && [...select.options].some((o) => o.value === type)) select.value = type;
+</script>

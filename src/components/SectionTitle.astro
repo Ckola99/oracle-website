@@ -1,0 +1,18 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  intro?: string;
+  align?: 'left' | 'center';
+  /** Heading level: use 1 for the page title. */
+  level?: 1 | 2;
+}
+const { eyebrow, title, intro, align = 'left', level = 2 } = Astro.props;
+const Tag = `h${level}` as 'h1' | 'h2';
+---
+
+<div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <Tag class:list={['mt-3 font-bold', level === 1 ? 'text-3xl sm:text-4xl lg:text-5xl' : 'text-2xl sm:text-3xl']}>{title}</Tag>
+  {intro && <p class="mt-4 text-lg leading-relaxed text-muted">{intro}</p>}
+</div>
